@@ -3,19 +3,19 @@ import { MongoRepository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { v4 } from 'uuid';
 import console from 'console';
-import { CreateCommentDTO } from 'src/post/dto/create-comment.dto';
+import { CreateCommentDto } from './dto/create-comment.dto'
 import { UpdateCommentDto } from './dto/update-comment.dto';
 import { Comments } from './entities/comment.entity';
 
 @Injectable()
 export class CommentRepository {
   constructor(
-    @InjectRepository(Comments)
+    @InjectRepository(Comment)
     private readonly commentRepositiries: MongoRepository<Comments>,
   ) {}
 
   // create comment logic
-  async addComment(createCommentDto: CreateCommentDTO): Promise<Comments> {
+  async addComment(createCommentDto: CreateCommentDto): Promise<Comments> {
     const { comment, user_name, user_id, post_id } = createCommentDto;
     const comments = new Comments();
     comments.comment_id = v4();

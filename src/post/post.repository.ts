@@ -7,8 +7,6 @@ import { CreatePostDTO } from './dto/create-post.dto';
 import { UpdatePostDTO } from './dto/update-post.dto';
 import { v4 } from 'uuid';
 import console from 'console';
-import { CreateCommentDTO } from './dto/create-comment.dto';
-import { UpdateCommentDto } from './dto/update-comment.dto';
 
 @Injectable()
 export class PostRepository {
