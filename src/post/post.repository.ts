@@ -25,7 +25,7 @@ export class PostRepository {
     post.description = description;
     post.user_name= user_name;
     post.user_id = user_id;
-    console.log(post);
+    // console.log(post);
     try {
       await this.postRepositiries.save(post);
       return post;
@@ -34,24 +34,6 @@ export class PostRepository {
     }
   }
   
- // create comment logic
-  async addComment(createCommentDto: CreateCommentDTO): Promise<Posts> {
-    const { comment, user_name, user_id, post_id } = createCommentDto;
-    const comments = new Posts();
-    comments.comment_id= v4();
-    comments.post_id=post_id
-    comments.comment = comment;
-    comments.user_name= user_name;
-    comments.user_id = user_id;
-    console.log(comments);
-    try {
-      await this.postRepositiries.save(comments);
-      return comments;
-    } catch (error) {
-      throw new Error(error);
-    }
-  }
-
   async getPost(postID:string): Promise<Posts> {
     const post = await this.postRepositiries.findOne({
       where: {
@@ -86,54 +68,12 @@ export class PostRepository {
     return "please try again"
   }
 
-  // comments section
-
-  async getComment(commentId:string): Promise<Posts>{
-    const comment = await this.postRepositiries.findOne({
-      where: {
-        comment_id: commentId,
-      },
-    });
-    return comment;
-  }
-
-
-  async getCommnets(): Promise<Posts[]> {
-    const comments = await this.postRepositiries.find();
-    return comments;
-  }
-
-  async getCommentsByPostId( id: string): Promise<Posts[]> {
-    const result = await this.postRepositiries.findBy({post_id:id});
-    return result;
-  }
-
   async getPosts(): Promise<Posts[]> {
     const posts = await this.postRepositiries.find();
     return posts;
   }
 
 
-  async updateComment(commentId :string, updateCommentDTO: UpdateCommentDto)  {
-    console.log(updateCommentDTO)
-    console.log(updateCommentDTO)
-    const updateddata = await this.postRepositiries.updateOne({commentId:commentId},{$set: updateCommentDTO });
 
-    if(updateddata.result.n){
-      return "comment is updated";
-    }
-
-    else
-    return "comment is not updated"
-  }
-
-  async deleteComment(comment_id:string)  {
-    const deletedPost = await this.postRepositiries.deleteOne({comment_id:comment_id});
-    if(deletedPost.result.n)
-    return "comment is deleted successfully";
-
-    else
-    return "please try again"
-  }
   // helper functions
 }

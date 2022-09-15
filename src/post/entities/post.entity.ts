@@ -11,15 +11,19 @@ import {
 export class Posts extends BaseEntity {
   @ObjectIdColumn()
   _id: string;
+  
   @PrimaryColumn()
   post_id: string;
+
   @Column()
   title: string;
+
   @Column()
   comment: string;
 
   @Column()
   comment_id: string;
+
   @Column()
   description: string;
    
