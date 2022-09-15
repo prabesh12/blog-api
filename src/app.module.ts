@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
+import { PostModule } from './post/post.module';
 // import { PostModule } from './post/post.module';
 
 
@@ -11,7 +12,7 @@ import { typeOrmConfig } from './config/typeorm.config';
 
 @Global()
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), AuthModule, 
+  imports: [TypeOrmModule.forRoot(typeOrmConfig), AuthModule,PostModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -3,10 +3,12 @@ import {
   Column,
   Entity,
   ObjectIdColumn,
+  OneToMany,
   PrimaryColumn,
   Unique,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Post } from 'src/post/entities/post.entity';
 @Entity()
 @Unique(['email', 'contactNumber'])
 export class User extends BaseEntity {
@@ -24,6 +26,9 @@ export class User extends BaseEntity {
   lastName: string;
 
   @Column()
+  userName: string;
+
+  @Column()
   email: string;
 
   @Column()
@@ -39,4 +44,6 @@ export class User extends BaseEntity {
     const hash = await bcrypt.hash(password, this.salt);
     return hash === this.password;
   }
+  // @OneToMany(()=>Post, post=>post.user,{onDelete:"CASCADE"})
+  // posts: Post[]
 }

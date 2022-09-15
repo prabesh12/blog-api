@@ -18,10 +18,10 @@ export class AuthService {
   ) {}
 
   async signUp(signUpDto: SignUpDto): Promise<User> {
+    console.log(signUpDto)
     return this.userRepository.signUp(signUpDto);
     
   }
-
   async signIn(signInDto: SignInDto): Promise<any> {
     console.log(signInDto)
     const user = await this.userRepository.validatePassword(signInDto);
@@ -34,6 +34,7 @@ export class AuthService {
       email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,
+      userName: user.userName,
       contactNumber: user.contactNumber,
       id: user.user_id,
       accessToken,

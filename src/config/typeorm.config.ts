@@ -2,7 +2,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'mongodb',
-  url: 'mongodb+srv://blog:blog@cluster0.wbotyz4.mongodb.net/?retryWrites=true&w=majority',
+  url: 'mongodb+srv://blog:blog@cluster0.wbotyz4.mongodb.net/blog?retryWrites=true&w=majority',
   synchronize: true,
   useUnifiedTopology: true,
   /*
