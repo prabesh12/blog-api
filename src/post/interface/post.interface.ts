@@ -1,6 +1,6 @@
-import { Post } from "../entities/post.entity";
+import { Posts } from "../entities/post.entity";
 
 export class PostInterface{
 
-    postDetail: Post;
+    postDetail: Posts;
 }

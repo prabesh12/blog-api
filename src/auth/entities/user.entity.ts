@@ -8,7 +8,7 @@ import {
   Unique,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { Post } from 'src/post/entities/post.entity';
+import { Posts } from 'src/post/entities/post.entity';
 @Entity()
 @Unique(['email', 'contactNumber'])
 export class User extends BaseEntity {
